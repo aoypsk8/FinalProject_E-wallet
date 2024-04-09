@@ -1,8 +1,11 @@
+import 'package:final_flutter_ewallet/screen/widgets/textFont.dart';
 import 'package:final_flutter_ewallet/utils/colors.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 // ignore: camel_case_types
 class buildFormField extends StatelessWidget {
@@ -87,6 +90,82 @@ class buildFormField extends StatelessWidget {
                 FormBuilderValidators.required(),
               ])
             : null,
+      ),
+    );
+  }
+}
+
+class BuildTextAreaValidate extends StatelessWidget {
+  BuildTextAreaValidate({
+    Key? key,
+    required this.controller,
+    this.label = '',
+    required this.name,
+    this.hintText = '',
+    this.icon,
+    this.iconColor = color_777,
+    this.max,
+    this.suffixIcon,
+    this.suffixonTapFuc,
+    this.fillcolor = cr_f2f2,
+    this.inputHeight = 50.0,
+  });
+
+  final TextEditingController controller;
+  final String name;
+  final String label;
+  final String hintText;
+  final IconData? icon;
+  final Color iconColor;
+  final int? max;
+  final Color fillcolor;
+  final Widget? suffixIcon;
+  final Function()? suffixonTapFuc;
+  final double inputHeight;
+
+  final storage = GetStorage();
+
+  @override
+  Widget build(BuildContext context) {
+    final border = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.0),
+      borderSide: const BorderSide(color: cr_f2f2, width: 1),
+    );
+    return TextFormField(
+      controller: controller,
+      keyboardType: TextInputType.multiline,
+      maxLines: 6,
+      maxLength: max == null ? null : max,
+      style: storage.read('lang_id') == 'lo'
+          ? GoogleFonts.notoSansLao(
+              color: cr_436,
+              fontSize: 12.5.sp,
+            )
+          : GoogleFonts.poppins(
+              color: cr_436,
+              fontSize: 12.5.sp,
+            ),
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(12),
+        hintText: hintText.tr(),
+        hintStyle: storage.read('lang_id') == 'lo'
+            ? GoogleFonts.notoSansLao(
+                color: cr_4c4,
+                fontSize: 12.5.sp,
+              )
+            : GoogleFonts.poppins(
+                color: cr_4c4,
+                fontSize: 12.5.sp,
+              ),
+        // fillColor: fillcolor,
+        // filled: true,
+        counter: const SizedBox.shrink(),
+        enabledBorder: border,
+        focusedBorder: border,
+        //! error border
+        errorStyle: GoogleFonts.notoSansLao(color: Colors.red),
+        focusedErrorBorder: border,
+        errorBorder: border,
       ),
     );
   }

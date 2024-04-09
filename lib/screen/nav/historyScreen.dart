@@ -96,9 +96,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.00, -1.00),
+              begin: Alignment(0.00, -2.00),
               end: Alignment(0, 2),
-              colors: [color_2c7, color_2c7],
+              colors: [color_394, color_2c7],
             ),
           ),
         ),

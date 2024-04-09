@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:keyboard_attachable/keyboard_attachable.dart';
-import 'package:sizer/sizer.dart';
 
 class TranferScreen extends StatefulWidget {
   const TranferScreen({super.key});
@@ -33,7 +32,7 @@ class _TranferScreenState extends State<TranferScreen> {
           text: "ການໂອນເງີນ",
           color: cr_fff,
           fontSize: 16,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: color_fff),
@@ -44,9 +43,9 @@ class _TranferScreenState extends State<TranferScreen> {
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              begin: Alignment(0.00, -1.00),
+              begin: Alignment(0.00, -2.00),
               end: Alignment(0, 2),
-              colors: [color_2c7, color_2c7],
+              colors: [color_394, color_2c7],
             ),
           ),
         ),

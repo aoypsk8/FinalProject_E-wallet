@@ -22,7 +22,11 @@ class MyIcon {
   static String cash_in = 'assets/icons/In.svg';
   static String cash_out = 'assets/icons/Out.svg';
   static String arrow_right = 'assets/icons/arrowright.svg';
-
+  static String arrow_bottom = 'assets/icons/arrow_bottom.svg';
+  static String bg_bill = 'assets/icons/logox_linenum.svg';
+  static String ic_check = 'assets/icons/ic_check.svg';
+  static String ic_share = 'assets/icons/ic_share.svg';
+  static String logox_linenum = 'assets/icons/logox_linenum.svg';
   //image
   static String advertiment = 'assets/images/advertiment.png';
 }
