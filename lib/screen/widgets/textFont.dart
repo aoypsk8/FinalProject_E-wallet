@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:final_flutter_ewallet/controller/homeController.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sizer/sizer.dart';
 
 class TextFont extends StatelessWidget {
   final String text;
@@ -23,15 +26,21 @@ class TextFont extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeController = Get.find<HomeController>();
     return Text(
       text,
       textAlign: textAlign,
-      style: GoogleFonts.notoSansLao(
-        color: color,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        // letterSpacing: letterSpacing,
-      ),
+      style: homeController.languageName.value == "lo"
+          ? GoogleFonts.notoSansLao(
+              color: color,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+            )
+          : GoogleFonts.poppins(
+              color: color,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+            ),
       textScaleFactor: 1.0,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,

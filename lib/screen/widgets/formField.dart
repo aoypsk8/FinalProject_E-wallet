@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: camel_case_types
 class buildFormField extends StatelessWidget {
   const buildFormField({
     super.key,
@@ -13,36 +14,45 @@ class buildFormField extends StatelessWidget {
     this.max,
     this.suffixIcon,
     this.suffixonTapFuc,
+    this.color = cr_fff,
+    this.fillColor = true,
+    this.hintTextColor = cr_fff,
+    this.typeInput = TextInputType.number,
   });
 
   final bool isValidate;
+  final bool? fillColor;
   final String hinText;
   final int? max;
+  final Color? color;
+  final Color? hintTextColor;
   final TextEditingController controller;
   final Widget? suffixIcon;
+  final TextInputType? typeInput;
   final Function()? suffixonTapFuc;
 
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(color: cr_f2f2, width: 1.5),
+      borderSide: const BorderSide(color: cr_f2f2, width: 1),
     );
     final errorBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(8.0),
-      borderSide: const BorderSide(color: cr_f63, width: 1.5),
+      borderSide: const BorderSide(color: cr_f63, width: 1),
     );
 
     return SizedBox(
       width: double.infinity,
       child: TextFormField(
+        keyboardType: typeInput,
         controller: controller,
         onChanged: (value) {
           if (max != null && value.length == max) {
             FocusScope.of(context).unfocus();
           }
         },
-        style: GoogleFonts.notoSansLao(),
+        style: GoogleFonts.notoSansLao(color: hintTextColor),
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(
             vertical: 16,
@@ -59,8 +69,11 @@ class buildFormField extends StatelessWidget {
               : null,
           border: InputBorder.none,
           hintText: tr(hinText),
-          hintStyle: GoogleFonts.notoSansLao(),
-          filled: true,
+          hintStyle: GoogleFonts.notoSansLao(
+            color: hintTextColor,
+          ),
+          filled: fillColor,
+          fillColor: color,
           enabledBorder: border,
           focusedBorder: border,
 

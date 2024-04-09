@@ -1,4 +1,5 @@
 import 'package:final_flutter_ewallet/utils/bindings/initial_binding.dart';
+import 'package:final_flutter_ewallet/utils/colors.dart';
 import 'package:final_flutter_ewallet/utils/route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -36,6 +37,9 @@ class MyApp extends StatelessWidget {
           locale: context.locale,
           title: 'Flutter Demo',
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: color_1a4,
+          ),
           initialRoute: '/',
           getPages: AppRoute.routes,
         );

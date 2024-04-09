@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:final_flutter_ewallet/screen/widgets/textFont.dart';
 import 'package:final_flutter_ewallet/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,7 @@ class Btn extends StatelessWidget {
   final EdgeInsetsGeometry padding;
   final Color borderColor;
   final Icon? icon;
+  final double? textSize;
   const Btn({
     super.key,
     this.func,
@@ -20,6 +23,7 @@ class Btn extends StatelessWidget {
     this.borderColor = Colors.black12,
     this.padding = const EdgeInsets.only(left: 15, right: 15, bottom: 15),
     this.icon,
+    this.textSize,
   });
 
   @override
@@ -53,7 +57,7 @@ class Btn extends StatelessWidget {
                 width: 15,
               ),
               TextFont(
-                fontSize: 18,
+                fontSize: textSize ?? 18.0,
                 text: text,
                 textAlign: TextAlign.center,
                 color: textColor,

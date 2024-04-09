@@ -43,7 +43,7 @@ dependencies:
   get_storage: ^2.1.1
   dio: ^5.4.0
   loading_animation_widget: ^1.2.1
-  easy_localization: ^3.0.2
+  easy_localization: ^3.0.3
   flutter_svg: ^1.1.6
   iconsax: ^0.0.8
   flutter_tabler_icons: ^1.1.2
@@ -51,6 +51,9 @@ dependencies:
   sizer: ^2.0.15
   badges: ^3.1.2
   carousel_slider: ^4.2.1
+  intl: ^0.18.1
+  toggle_switch: ^2.1.0
+  local_auth: ^2.1.6
 
 dev_dependencies:
   flutter_test:

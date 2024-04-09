@@ -7,6 +7,7 @@ class MyIcon {
 
   static String flat_usa = 'assets/icons/flag_usa.svg';
   static String flat_lao = 'assets/icons/flag_lao.svg';
+  static String ic_languange = 'assets/icons/languange.svg';
 
   static String eye = 'assets/icons/eye.svg';
   static String close_eye = 'assets/icons/close_eye.svg';
@@ -18,6 +19,9 @@ class MyIcon {
   static String home = 'assets/icons/home.svg';
   static String history = 'assets/icons/history.svg';
   static String person = 'assets/icons/person.svg';
+  static String cash_in = 'assets/icons/In.svg';
+  static String cash_out = 'assets/icons/Out.svg';
+  static String arrow_right = 'assets/icons/arrowright.svg';
 
   //image
   static String advertiment = 'assets/images/advertiment.png';

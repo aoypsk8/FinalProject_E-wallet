@@ -1,3 +1,14 @@
 {
-    "hello": "ສະບາຍດີ"
+    "hello": "hello",
+    "balance":"Current Balance :",
+    "kip":"KIP",
+    "services":"Services",
+    "tranfer":"Tranfer",
+    "qr":"QR Code",
+    "detail_card":"Detail Card",
+    "check_bill":"X-Proof",
+    "hot":"Hot 🔥",
+    "recommendation":"Recommendation",
+    "more_option":"More Option ",
+    "scan":"Scan"
 }

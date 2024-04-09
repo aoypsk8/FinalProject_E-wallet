@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:final_flutter_ewallet/screen/widgets/buildMenuService.dart';
 import 'package:final_flutter_ewallet/screen/widgets/buildMoreOption.dart';
 import 'package:final_flutter_ewallet/screen/widgets/buildTitle.dart';
+import 'package:final_flutter_ewallet/screen/widgets/language.dart';
 import 'package:final_flutter_ewallet/screen/widgets/textFont.dart';
 import 'package:final_flutter_ewallet/utils/colors.dart';
 import 'package:final_flutter_ewallet/utils/icon_image.dart';
@@ -28,11 +29,11 @@ bool showBalance = false;
 int _current = 0;
 
 List fakeData = [
-  {"image": MyIcon.tranfer, "title": "ໂອນເງິນ"},
-  {"image": MyIcon.qr, "title": "ສ້າງ QR"},
-  {"image": MyIcon.card_detail, "title": "ລາຍລະອຽດ"},
-  {"image": MyIcon.bill_check, "title": "ກວດສອບບີນ"},
-  {"image": MyIcon.bill_check, "title": "ກວດສອບບີນ"},
+  {"image": MyIcon.tranfer, "title": "tranfer", "path": "/tranfer"},
+  {"image": MyIcon.qr, "title": "qr", "path": "/qr"},
+  {"image": MyIcon.card_detail, "title": "detail_card", "path": "/card_detail"},
+  {"image": MyIcon.bill_check, "title": "check_bill", "path": "/bill_check"},
+  {"image": MyIcon.bill_check, "title": "check_bill", "path": "/bill_check"},
 ];
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -87,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       scanQR(),
                       const SizedBox(height: 10),
-                      const build_title(title: "ການບໍລິການ"),
+                      const build_title(title: "services"),
                       const SizedBox(height: 10),
                       Row(
                         children: [
@@ -101,7 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: buildMenuService(
                                     image: fakeData[index]["image"]!,
                                     title: fakeData[index]["title"]!,
-                                    func: () {},
+                                    func: () {
+                                      Get.toNamed(fakeData[index]["path"]!);
+                                    },
                                   ),
                                 ),
                               ),
@@ -109,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      const build_title(title: "ກຳລັງມາແຮງ"),
+                      const build_title(title: "hot"),
                       const SizedBox(height: 15),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -137,11 +140,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       const SizedBox(height: 15),
-                      const build_title(title: "ແນະນຳ"),
+                      const build_title(title: "recommendation"),
                       const SizedBox(height: 15),
                       slideAndPoint(),
                       const SizedBox(height: 15),
-                      const build_title(title: "ຂໍ້ມູນເພີ່ມເຕີມ"),
+                      const build_title(title: "more_option"),
                       const SizedBox(height: 15),
                       Column(
                         children: List.generate(
@@ -236,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> {
             SvgPicture.asset(MyIcon.scan),
             const SizedBox(width: 5),
             const TextFont(
-              text: 'ສະແກນຈ່າຍ',
+              text: 'scan',
               fontWeight: FontWeight.w500,
               color: color_fff,
               fontSize: 16,
@@ -249,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget buildCard() {
     return Container(
-      height: 175,
+      height: 47.w,
       width: double.infinity,
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -288,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const TextFont(
-                      text: 'Current balance :',
+                      text: 'balance',
                       fontWeight: FontWeight.w300,
                       color: color_fff,
                       fontSize: 13,
@@ -306,7 +309,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             const SizedBox(width: 10),
                             const TextFont(
-                              text: 'ກີບ',
+                              text: 'kip',
                               fontWeight: FontWeight.w400,
                               color: color_aea,
                               fontSize: 17,
@@ -380,7 +383,8 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(50.0),
             child: Image.network(
-                'https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png'),
+              'https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png',
+            ),
           ),
         ),
         const SizedBox(width: 10),
@@ -409,14 +413,13 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       padding: const EdgeInsets.only(right: 10, top: 10),
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
             onTap: () {
-              // if (storage.read('lang_id') != null &&
-              //     storage.read('lang_flat') != null) {
-              //   Get.to(() => Language());
-              // }
+              if (storage.read('lang_id') != null &&
+                  storage.read('lang_flat') != null) {
+                Get.to(() => const Language());
+              }
             },
             child: Container(
               padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 12),
@@ -425,31 +428,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(6)),
               ),
-              child: storage.read('lang_id') == null &&
-                      storage.read('lang_flat') == null
-                  ? Container(
-                      height: 6.w,
-                      width: 6.w,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle, color: Colors.grey[200]),
-                    )
-                  : Row(
-                      children: [
-                        SizedBox(
-                          height: 6.w,
-                          width: 6.w,
-                          child: SvgPicture.asset(storage.read('lang_flat')),
-                        ),
-                        const SizedBox(width: 6),
-                        TextFont(
-                          text:
-                              storage.read('lang_id').toString().toUpperCase(),
-                          fontSize: 10,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ],
-                    ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 6.w,
+                    width: 6.w,
+                    child:
+                        SvgPicture.asset(storage.read('lang_flat').toString()),
+                  ),
+                  const SizedBox(width: 6),
+                  TextFont(
+                    text: storage.read('lang_id').toString().toUpperCase(),
+                    fontSize: 10,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ],
+              ),
             ),
           ),
           const Spacer(),

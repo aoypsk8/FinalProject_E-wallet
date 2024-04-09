@@ -43,7 +43,7 @@ class buildMenuService extends StatelessWidget {
             text: title,
             fontWeight: FontWeight.w600,
             color: color_485,
-            fontSize: 16,
+            fontSize: 14,
           ),
         ],
       ),
